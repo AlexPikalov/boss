@@ -17,16 +17,14 @@ pub extern "C" fn _start() -> ! {
     test_main();
 
     println!("It didn not crash!");
-
-    loop {}
+    boss::hlt_loop();
 }
 
 #[cfg(not(test))]
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
     println!("{info}");
-
-    loop {}
+    boss::hlt_loop();
 }
 
 #[cfg(test)]
